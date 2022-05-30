@@ -11,8 +11,13 @@
   flex: 0 0 40%;
   align-items: center;
   justify-content: center;
-
   display: flex;
+
+  @media only screen and (max-width: $bp-smaller) {
+    order: 1;
+    flex: 0 0 100%;
+    background-color: var(--color-grey-light-2);
+  }
 
   &__input {
     font-family: inherit; //input doesn't inherit global font-family
@@ -185,7 +190,12 @@
     @media only screen and (max-width: $bp-medium) {
       justify-content: center;
       padding: 2rem;
-  }
+    }
+
+    @media only screen and (max-width: $bp-smaller) {
+      flex-direction: column;
+      padding: 1.5rem 0.5rem;
+    }
   }
 
   &__icon {
@@ -193,6 +203,13 @@
     height: 1.75rem;
     margin-right: 2rem;
     fill: currentColor;
+
+    @media only screen and (max-width: $bp-smaller) {
+      margin-right: 0;
+      margin-bottom: 0.7rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 }
 
@@ -236,6 +253,11 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 1.5rem 3rem;
+
+    @media only screen and (max-width: $bp-smaller) {
+      font-size: 1.8rem;
+      padding: 1.25rem 2rem;
+    }
   }
 
   &__stars {
@@ -272,6 +294,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @media only screen and (max-width: $bp-smaller) {
+      padding: 0 1.5rem;
+    }
   }
 
   &__rating-count {
@@ -282,6 +308,10 @@
   &__rating-average {
     font-size: 2.25rem;
     font-weight: 300;
+
+    @media only screen and (max-width: $bp-smaller) {
+      font-size: 0.5rem;
+    }
   }
 }
 
@@ -368,15 +398,18 @@
     margin-right: 0.7rem;
 
     //Older browsers
-    // background-image: url('../img/SVG/chevron-thin-right.svg');
-    // background-size: cover;
+    background-image: url("../img/SVG/chevron-thin-right.svg");
+    background-size: cover;
 
     //Newer browsers = masks
-    background-color: var(--color-primary);
-    -webkit-mask-image: url("../img/SVG/chevron-thin-right.svg");
-    -webkit-mask-size: cover; //important for displaying the whole icon
-    mask-image: url("../img/SVG/chevron-thin-right.svg");
-    mask-size: cover;
+    @supports (-webkit-mask-image: url()) or (mask-image: url()) {
+      background-color: var(--color-primary);
+      -webkit-mask-image: url("../img/SVG/chevron-thin-right.svg");
+      -webkit-mask-size: cover; //important for displaying the whole icon
+      mask-image: url("../img/SVG/chevron-thin-right.svg");
+      mask-size: cover;
+      background-image: none;
+    }
   }
 }
 
@@ -423,7 +456,7 @@
   @media only screen and (max-width: $bp-medium) {
     padding: 2rem;
     margin-bottom: 3rem;
-}
+  }
 
   &__text {
     margin-bottom: 2rem;
@@ -487,7 +520,7 @@
 
   @media only screen and (max-width: $bp-medium) {
     padding: 2.5rem 0;
-}
+  }
 
   &__book-now {
     font-size: 2rem;
